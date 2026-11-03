@@ -3,7 +3,7 @@ name: git-pr
 description: 'Use this skill when the user asks to open a GitHub pull request, says "open a PR" or "/pr", or asks to write or change a PR title or description. It writes them for the commit that lands on the main branch. Do not use it to make commits, push without a PR, merge, review, or work with other hosts.'
 license: MIT
 compatibility: 'Requires Git and the GitHub CLI (`gh`), signed in with `gh auth status`.'
-allowed-tools: shell(git:*), shell(gh:*)
+allowed-tools: shell(git:*), shell(gh pr create:*), shell(gh pr edit:*), shell(gh pr list:*), shell(gh pr view:*), shell(gh repo view:*), shell(gh api:*), shell(gh auth status:*)
 ---
 
 # Git Pull Request
