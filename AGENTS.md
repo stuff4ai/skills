@@ -15,3 +15,10 @@ This repository holds reusable agent skills and the tools that build them.
   its source and rebuild.
 - A skill derived from another project keeps its source and original license
   in a `NOTICE` file next to `SKILL.md`.
+
+<!-- git-policy:start -->
+merge: squash
+squash-message: pr-title-description
+sign-off: required
+approval: human
+<!-- git-policy:end -->
