@@ -39,7 +39,7 @@ Ask one at a time, in this order. Use the question tool of the agent if it has o
    - All methods: `--enable-squash-merge --enable-merge-commit --enable-rebase-merge`
    - Keep the current methods: no flags
 2. **Squash commit message.** Ask it unless squash will be off after question 1. Every answer carries `--enable-squash-merge`, because `gh` rejects the message flag without it.
-   - Pull request title and description (default): `--enable-squash-merge --squash-merge-commit-message pr-title-description`. The description becomes the commit body, so the trailers written there reach the main branch.
+   - Pull request title and description (default): `--enable-squash-merge --squash-merge-commit-message pr-title-description`. The description becomes the commit body, and GitHub adds the `Signed-off-by` and `Co-authored-by` trailers of the branch commits itself.
    - Title and commit messages: `--enable-squash-merge --squash-merge-commit-message pr-title-commits`
    - Title only: `--enable-squash-merge --squash-merge-commit-message pr-title`. The body is blank, so no trailers reach the main branch.
    - GitHub default: `--enable-squash-merge --squash-merge-commit-message default`
