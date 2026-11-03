@@ -1,3 +1,5 @@
 .cache/
-.agents/
-.claude/
+.agents/*
+!.agents/skills/
+.claude/*
+!.claude/skills/
