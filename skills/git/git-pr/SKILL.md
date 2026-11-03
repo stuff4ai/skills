@@ -44,22 +44,20 @@ The description is the body of the future commit.
 - Wrap lines at 72 characters, as in a commit message. Do not use a Markdown table, a heading, or a checklist. A short list of plain items is fine.
 - Leave out temporary facts: CI results, test output, screenshots, review state, and "ready for review".
 - Refer to files by paths relative to the repository root. Do not use absolute paths or local file links.
-- To link an issue, put `Closes #123` or `Refs #123` in its own paragraph before the trailers.
+- To link an issue, put `Closes #123` or `Refs #123` in its own paragraph at the end.
 - Write in the language of the project history, usually English.
 
 ## Trailers
 
-What lands on the main branch depends on the squash message setting of the repository:
+Do not write trailers such as `Signed-off-by` or `Co-authored-by` in the description. What lands on the main branch depends on the squash message setting of the repository:
 
-- `PR_BODY`: the description. Trailers of the branch commits are lost unless the description repeats them.
+- `PR_BODY`: the description. GitHub itself adds `Signed-off-by` and `Co-authored-by` for the author and the co-authors of the branch commits. A copy in the description appears twice.
 - `COMMIT_MESSAGES`: the messages of the branch commits, trailers included.
-- `BLANK`: no body.
+- `BLANK`: no body, so no trailers.
 
-Check it with `gh api repos/{owner}/{repo} --jq '[.allow_squash_merge, .squash_merge_commit_message]'`. Empty values mean the setting is unknown, for example without push access: then keep the trailers and do not warn.
+If the setting is `BLANK`, tell the user that no trailers will reach the main branch. To check it, run `gh api repos/{owner}/{repo} --jq .squash_merge_commit_message`. Empty output means the setting is unknown, for example without push access: then say nothing.
 
-- Copy each distinct trailer from the branch commits, exactly and once, into one block at the very end of the description, after a blank line, one per line. Do not add a trailer that no commit carries.
-- If the setting is `BLANK`, tell the user that no trailers will reach the main branch. Under `COMMIT_MESSAGES` the copy does no harm.
-- Do not add a "Generated with" line or any other banner, unless the project asks for one.
+Do not add a "Generated with" line or any other banner, unless the project asks for one.
 
 ## Create
 
