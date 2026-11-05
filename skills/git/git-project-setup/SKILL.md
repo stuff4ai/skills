@@ -25,7 +25,7 @@ Repository settings are shared and affect everyone. Ask one question per setting
    - `gh api repos/{owner}/{repo} --jq '{squash: .allow_squash_merge, merge: .allow_merge_commit, rebase: .allow_rebase_merge, title: .squash_merge_commit_title, message: .squash_merge_commit_message, delete: .delete_branch_on_merge}'`
    - `gh api --paginate 'repos/{owner}/{repo}/rulesets?includes_parents=false' --jq '.[] | {id, name, target, enforcement}'`
    - `gh api repos/{owner}/{repo}/rules/branches/<base>`: the rules that apply to the base branch now.
-5. Look for a policy block in `AGENTS.md` (see "Record the policy"). If there is one, its values are the defaults of the questions, instead of the ones below.
+5. Look in the project instructions (`AGENTS.md`, `CLAUDE.md`, `CONTRIBUTING.md`) for rules about these settings, in any words. If there are some, use their values as the defaults of the questions, instead of the ones below, and tell the user.
 
 Show the user the current state, then ask the questions.
 
@@ -78,6 +78,8 @@ After the last answer, show the exact commands and apply them:
 If a command fails, report it, run no later command that depends on it, and write the policy block only from the state that you read back. Then read the state again with the commands of step 4, and tell the user what it is now. Report anything that did not change.
 
 ## Record the policy
+
+The block is optional: other skills work without it. Offer to write it, and skip this section if the user declines. If the project instructions already state the policy in their own words, do not add a second copy: ask whether to replace those lines with the block or leave them.
 
 Write the policy into the `AGENTS.md` of the project, between markers. Create the file if it is missing.
 
